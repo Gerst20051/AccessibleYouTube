@@ -1,0 +1,130 @@
+<html>
+    <head>
+        <title>Accessible YouTube: Advanced Settings</title>
+        
+        <link rel="stylesheet" href="css/sway.css" type="text/css" />
+        
+        <script type="text/javascript" src="js/dojo/dojo.js"></script>
+        <script type="text/javascript" src="js/string_manipulations.js"></script>
+        <script type="text/javascript" src="js/config.js"></script>
+        <script type="text/javascript" src="js/load_settings.js"></script>
+        <script type="text/javascript" src="js/use_firefox.js"></script>
+        <script type="text/javascript" src="js/save_settings.js"></script>
+        
+        <script type="text/javascript">
+            function postprocessByPlaylist()
+            {
+                console.log("Extracting playlist ID...");
+                var textfield = dojo.byId("enter_playlist_by_URL");
+                console.debug(textfield);
+                var si = textfield.value;
+                console.log(si);
+                var args = parseArgs(si);
+                var sf = args["p"];
+                console.log(sf);
+                if (sf == null)
+                {
+                    sf = "";
+                }
+                var playlistIDholder = dojo.byId("playlist_ID");
+                playlistIDholder.value = sf;
+                console.log("Filling in disablebrowsing");
+                var visiblebrowsingcontrol = dojo.byId("enable_browsing");
+                var invisiblebrowsingcontrol = dojo.byId("disable_browsing");
+                //console.log("visible browsing control says:");
+                //console.debug(visiblebrowsingcontrol);
+                //console.debug(visiblebrowsingcontrol.checked);
+                //console.log("invisible browsing control says:");
+                //console.debug(invisiblebrowsingcontrol);
+                //if (!visiblebrowsingcontrol.checked) {
+                    //invisiblebrowsingcontrol.value = "true";
+                    //console.log("DISABLING BROWSING");
+                //}
+                invisiblebrowsingcontrol.value = !visiblebrowsingcontrol.checked;
+            }
+
+        </script>
+    </head>
+    <body>
+        <div id="header-title">
+            <h1><a href="index.html">Accessible YouTube</a></h1>
+        </div>
+        <div id="header-homeicon">
+            <a title="Go home." href="index.html">
+                <img width="32" height="32" alt="Go home."
+                 src="images/house.jpg">
+                <!--
+                    Home
+                -->
+            </a>
+        </div>
+
+<!--
+    To add a list of options on this page, create a new form.
+    Each of the <input>s on the form should have its name set
+    to the attribute of config.settings it controls and should
+    be of an appropriate type. In the <form> tag, set
+    onchange="saveOptions(this)" and give it the class
+    "optionlist". The form should then be ready to go.
+-->
+
+        <p>
+            Here you can customize your settings for Accessible YouTube.
+            You can also access specific lists of movies stored in
+            YouTube playlists.
+            <strong>Note:</strong> you must have cookies enabled for the settings
+            to be saved.
+        </p>
+        <p>
+            To turn off some of the more advanced player options, uncheck
+            the corresponding boxes below.
+        </p>
+        <p>
+            <form class="optionlist" onchange="saveOptions(this)">
+                <!--
+                <input type="checkbox" name="ctrlenabled_pause" checked="true" />
+                Pause/Play
+                <br />
+                <input type="checkbox" name="ctrlenabled_choose_new" checked="true" />
+                Choose another movie
+                <br />
+                -->
+                <input type="checkbox" name="ctrlenabled_restart" checked="true" />
+                Go to beginning
+                <br />
+                <input type="checkbox" name="ctrlenabled_rewind" checked="true" />
+                Go back 10 seconds
+                <br />
+                <input type="checkbox" name="ctrlenabled_fastfwd" checked="true" />
+                Go forward 10 seconds
+                <br />
+                <input type="checkbox" name="ctrlenabled_watch_related" checked="true" />
+                Watch related videos
+            </form>
+        </p>
+        <p>
+            To watch videos from a playlist, go to YouTube, find the
+            playlist you want to watch, click through to the "View
+            Playlist" page, and copy the Permalink URL into the box
+            below. Then click Go. For more detailed instructions, click
+            <a href="playlistinstructions.html">here</a>.
+        </p>
+        <p>
+            <form id="by_playlist" action="sway.html" onSubmit="postprocessByPlaylist()" method="get">
+                <input id="disable_browsing" type="hidden" name="disablebrowsing" value="false" />
+                If you have a prepared list of videos and would like to
+                disable browsing of any other videos, uncheck this box
+                (this will also disable the "Watch Related" player control):
+                <br />
+                <input id="enable_browsing" type="checkbox" checked="true" />
+                Enable browsing
+                <br />
+                Playlist URL:
+                <input type="hidden" name="feedsource" value="playlist" />
+                <input id="playlist_ID" type="hidden" name="p" value="" />
+                <input id="enter_playlist_by_URL" type="text" value="http://www.youtube.com/view_play_list?p=12E6951194208C5D&search_query=kittens" style="width:400px;" />
+                <input type="submit" value="Go" />
+            </form>
+        </p>
+    </body>
+</html>

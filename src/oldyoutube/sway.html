@@ -1,0 +1,162 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html class="fillpage">
+    <head>
+    
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Accessible Youtube: Player</title>
+        <link rel="stylesheet" href="css/blocker.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="css/sway.css" type="text/css" />
+        <link rel="stylesheet" href="css/player.css" type="text/css" />
+        
+        <script type="text/javascript" src="js/dojo/dojo.js"></script>
+        <script type="text/javascript" src="js/swfobject/swfobject.js"></script>
+        <script type="text/javascript" src="js/generate-player.js?v=2"></script>
+        <script type="text/javascript" src="js/blocker.js?v=2"></script>
+        
+        <script type="text/javascript" src="js/config.js?v=2"> </script>
+        <script type="text/javascript" src="js/string_manipulations.js?v=2"></script>
+        <script type="text/javascript" src="js/text_to_speech.js?v=2"></script>
+        <script type="text/javascript" src="js/node_access.js?v=2"></script>
+        <script type="text/javascript" src="js/change_menus.js?v=2"></script>
+        <script type="text/javascript" src="js/move_and_choose.js?v=2"></script>
+        <script type="text/javascript" src="js/handle_keys.js?v=2"></script>
+        <script type="text/javascript" src="js/toggle_UI.js?v=2"></script>
+        <script type="text/javascript" src="js/movielist.js?v=2"></script>
+        <script type="text/javascript" src="js/player_controls.js?v=2"></script>
+        <script type="text/javascript" src="js/scrolling.js?v=2"></script>
+        <script type="text/javascript" src="js/interpret_YT_feed.js?v=2"></script>
+        <script type="text/javascript" src="js/get_YT_feed.js?v=2"></script>
+        <script type="text/javascript" src="js/player_status.js?v=2"></script>
+        <script type="text/javascript" src="js/setup.js?v=2"></script>
+        <script type="text/javascript" src="js/loadtime_functions.js?v=2"></script>
+        <script type="text/javascript" src="js/use_firefox.js?v=2"></script>
+        <script type="text/javascript" src="js/load_settings.js?v=2"></script>
+    </head>
+    <body class="fillpage">
+        <div id="header-title">
+            <h1><a href="index.html">Accessible YouTube</a></h1>
+        </div>
+        <div id="header-homeicon">
+            <a title="Go home." href="index.html">
+                <img width="32" height="32" alt="Go home."
+                 src="images/house.jpg">
+                <!--
+                    Home
+                -->
+            </a>
+        </div>
+        
+        <div id="entirepage" class="fillpage">
+            <!-- h1 style="text-align:center">Switch Accessible Youtube</h1 -->
+            <div id="moviechoices" class="choicelist" onactivate="activateMovieChoices" oninactivate="inactivateMovieChoices">
+                <table style="vertical-align:bottom">
+                    <tbody>
+                        <tr>
+                            <td id="future_l_arrow">
+                            </td>
+                            <td id="future_back_button">
+                                <div class="choice notshown alwaysclickable">
+                                </div>
+                            </td>
+                            <td>
+                                <table>
+                                    <tbody style="vertical-align:bottom">
+                                        <tr id="actualmovielist">
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td id="future_r_arrow">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="player_and_controls">
+                <table style="padding-top: 16px; padding-bottom: 16px; margin-left:auto; margin-right:auto;">
+                    <tr>
+                        <td style="vertical-align:top; margin-top: 0px;">
+                            <div>
+                                <div>
+                                    <p id="future_generated_player">
+                                        Loading player, please wait...
+                                    </p>
+                                </div>
+                                <div id="playerstatusbar" style="text-align:right">
+                                    0:00/0:00
+                                </div>
+                            </div>
+                        </td>
+                        <td style="vertical-align:top; margin-top: 0px;">
+                            <div id="sway-playercontrols" class="choicelist inactive" onactivate="activatePlayerControls" oninactivate="inactivatePlayerControls">
+                                <ul class="no_bullets" style="list-style-type:none; margin:0px;">
+                                    <li id="swayctrl_pause"
+                                      class="choice shown"
+                                      onchoose="usePlayerControl"
+                                      playerctrlname="pause"
+                                      resettodefaultplayerctrl='false'>
+                                        <div class="ttsinfo">
+                                            Pause
+                                        </div>
+                                    </li>
+                                    <li id="swayctrl_choose_new"
+                                      class="choice shown"
+                                      onchoose="usePlayerControl"
+                                      playerctrlname="choose_new"
+                                      resettodefaultplayerctrl='false'>
+                                        <div class="ttsinfo">
+                                            Choose another movie
+                                        </div>
+                                    </li>
+                                    <li id="swayctrl_restart"
+                                      class="choice shown"
+                                      onchoose="usePlayerControl"
+                                      playerctrlname="restart"
+                                      resettodefaultplayerctrl='true'>
+                                        <div class="ttsinfo">
+                                            Go to beginning
+                                        </div>
+                                    </li>
+                                    <li id="swayctrl_rewind"
+                                      class="choice shown"
+                                      onchoose="usePlayerControl"
+                                      playerctrlname="rewind"
+                                      resettodefaultplayerctrl='false'>
+                                        <div class="ttsinfo">
+                                            Go back 10 seconds
+                                        </div>
+                                    </li>
+                                    <li id="swayctrl_fastforward"
+                                      class="choice shown"
+                                      onchoose="usePlayerControl"
+                                      playerctrlname="fforward"
+                                      resettodefaultplayerctrl='false'>
+                                        <div class="ttsinfo">
+                                            Go forward 10 seconds
+                                        </div>
+                                    </li>
+                                    <li id="swayctrl_get_related"
+                                      class="choice shown"
+                                      onchoose="usePlayerControl"
+                                      playerctrlname="get_related_videos"
+                                      resettodefaultplayerctrl='false'>
+                                        <div class="ttsinfo">
+                                            Watch related videos
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div>
+                    <div id="movie-title" style="font-size:20px; padding-bottom: 16px;">
+                    </div>
+                    <div id="movie-description">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+

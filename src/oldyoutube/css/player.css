@@ -1,0 +1,32 @@
+.choice {
+    border: 5px solid white;
+}
+.ttsinfo {
+}
+.nowplaying {
+    border: 5px solid gold;
+}
+.selected {
+    border: 5px solid red;
+}
+.fillpage {
+    height: 100%;
+    width: 100%;
+}
+.inactive {
+    //color: #cccccc;
+    opacity: .2;
+}
+.notshown {
+    /* display:none; */
+}
+.shown {
+}
+.alwaysclickable {
+}
+.alwaysclickable.shown:hover {
+    border: 5px solid red;
+}
+.movie {
+}
+

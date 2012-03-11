@@ -1,0 +1,16 @@
+#header-homeicon {
+    font-size: 12px;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    text-align: left;
+    width: 100px;
+}
+
+#header-title {
+    text-align: center;
+    position: relative;
+    top: -20px;
+    background-color: #eeeeee;
+}
+

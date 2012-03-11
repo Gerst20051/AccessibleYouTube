@@ -1,0 +1,114 @@
+<html>
+    <head>
+        <title>Accessible YouTube</title>
+        
+        <link rel="stylesheet" href="css/sway.css" type="text/css" />
+        
+        <script type="text/javascript" src="js/dojo/dojo.js"></script>
+        <script type="text/javascript" src="js/string_manipulations.js"></script>
+        <script type="text/javascript">
+            function extractPlaylistIDFromURL()
+            {
+                console.log("Extracting playlist ID...");
+                var textfield = dojo.byId("enter_playlist_by_URL");
+                console.debug(textfield);
+                var si = textfield.value;
+                console.log(si);
+                var args = parseArgs(si);
+                var sf = args["p"];
+                console.log(sf);
+                if (sf == null)
+                {
+                    sf = "";
+                }
+                var playlistIDholder = dojo.byId("playlist_ID");
+                playlistIDholder.value = sf;
+            }
+
+        </script>
+        <!-- script type="text/javascript" src="js/gutURL.js"> </script -->
+    </head>
+    <body>
+        <div id="header-title">
+            <h1><a href="index.html">Accessible YouTube</a></h1>
+        </div>
+        <div id="header-homeicon">
+            <a title="Go home." href="index.html">
+                <img width="32" height="32" alt="Go home."
+                 src="images/house.jpg">
+                <!--
+                    Home
+                -->
+            </a>
+        </div>
+
+        <!-- h1 style="text-align:center;"> Switch-Accessible YouTube Main Page </h1 -->
+        <p>
+            Welcome to Accessible YouTube, an interface to
+            <a href="http://www.youtube.com/">YouTube</a>
+            designed for people who access their computers via either
+            2 switches or a mouse.
+            It allows the user to use two keys/switches or a mouse to
+            navigate through a list of videos, and watch any or all of
+            them.
+            Currently the list of videos can be a playlist, the results
+            of a video search, the related videos for a particular video,
+            or YouTube's most popular videos.
+            For now, you must use Firefox in order for it to work.
+            You can download Firefox for free
+            <a href="http://www.mozilla.com/firefox/">here</a>.
+        </p>
+        <p>
+            Note the little home icon
+            <img src="images/house.jpg" alt="home icon" title="Go home"
+             height="16" width="16">
+            in the upper left corner of the page.
+            Clicking it will bring you back here.
+        </p>
+        <p>
+            <strong>Warning</strong>: This interface allows unfiltered
+            access to YouTube videos, some of which are not appropriate
+            for all viewers.
+        </p>
+        <p>
+            Ready to get started?
+        </p>
+        <ul>
+            <li> <p>
+                <a href="sway.html?feedsource=stdfeed&f=most_popular">
+                    Browse YouTube's most popular videos.
+                </a>
+            </p> </li>
+            <li> <p>
+                <form id="do_search" action="sway.html" method="get">
+                    Search YouTube videos:
+                    <input type="hidden" name="feedsource" value="search" />
+                    <input type="text" name="q" value="kittens" />
+                    <input type="submit" value="Go" />
+                </form>
+            </p> </li>
+            <li> <p>
+                See
+                <a href="options.html">advanced options</a>.
+            </p> </li>
+            <!-- 
+                To browse the standard feeds, click
+                <a href="browsestandardfeeds.html">here</a>.
+             -->
+            <!--
+            <li> <p>
+                <form id="by_playlist" action="sway.html" onSubmit="extractPlaylistIDFromURL()" method="get">
+                    Watch a pre-made playlist:
+                    <input type="hidden" name="feedsource" value="playlist" />
+                    <input id="playlist_ID" type="hidden" name="p" value="" />
+                    <input id="enter_playlist_by_URL" type="text" value="http://www.youtube.com/view_play_list?p=12E6951194208C5D&search_query=kittens" style="width:400px;" />
+                    <input type="submit" value="Go" />
+                </form>
+            </p> </li>
+            -->
+        </ul>
+        <p>
+            Please send comments and suggestions to <a href="mailto:ayt-comments@cs.unc.edu"> ayt-comments@cs.unc.edu</a>. Thanks!
+        </p>
+    </body>
+</html>
