@@ -2,6 +2,7 @@
 
 dojo.require('dojo.window');
 dojo.require('dojo.io.script');
+dojo.require('dojo.cookie');
 
 dojo.ready(function(){
 	window.app = new youtube.Main();
@@ -465,12 +466,12 @@ dojo.declare('youtube.Main', null, {
 		}
 	},
 	speech: function(data){
-		if (this.aC.settings.voice) return;
-		uow.getAudio().then(function(a){
-			a.stop();
-			a.setProperty({name: 'rate', value: 150});
-			a.say({text: data.replace(/[^a-zA-Z0-9 ,.?]+/g,'')});
-		});
+		if (this.aC.settings.disable_voice) return;
+		// uow.getAudio().then(function(a){
+		// 	a.stop();
+		// 	a.setProperty({name: 'rate', value: 150});
+		// 	a.say({text: data.replace(/[^a-zA-Z0-9 ,.?]+/g,'')});
+		// });
 	}
 });
 
