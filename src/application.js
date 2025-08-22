@@ -295,6 +295,7 @@ dojo.declare('youtube.Main', null, {
 		dojo.publish('/video-list/loaded');
 	},
 	getVideos: function(){
+		// TODO: UPDATE YOUTUBE API
 		var main_arguments = arguments;
 		var url = "http://gdata.youtube.com/feeds/api/videos";
 		if (arguments[0] == "popular") url = "http://gdata.youtube.com/feeds/api/standardfeeds/top_favorites";
@@ -322,6 +323,7 @@ dojo.declare('youtube.Main', null, {
 			callbackParamName: "callback",
 			content: content
 		}).then(function(result){
+			// TODO: RETRIEVE RESULTS
 			var items = result.data.items;
 			if (typeof(playlistfeed) != "undefined") {
 				var preitems = result.data.items;
@@ -475,6 +477,7 @@ dojo.declare('youtube.Main', null, {
 	}
 });
 
+// TODO: UPDATE YOUTUBE PLAYER
 function onYouTubePlayerReady(a){
 	ytplayer = dojo.byId(a);
 	ytplayer.addEventListener("onStateChange", "onPlayerStateChange");
